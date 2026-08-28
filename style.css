@@ -1,0 +1,544 @@
+/* =========================================================
+   PRAKTIKUM PERTEMUAN 7
+   Dashboard Penjadwalan Hemodialisis
+   Tema: Pastel Cream - Brown - Beige
+   ========================================================= */
+
+:root {
+  /* ===== WARNA UTAMA ===== */
+  --bg: #f7f1e8;
+  --surface: #fffdf9;
+  --surface-soft: #f9f4ec;
+  --text: #4a3b32;
+  --muted: #8a786b;
+  --line: #e8ddd0;
+
+  /* Cream & Brown */
+  --primary: #9a7355;
+  --primary-soft: #f3e8dc;
+
+  /* Hijau pastel */
+  --success: #789b7a;
+  --success-soft: #edf5ed;
+
+  /* Peach / Orange pastel */
+  --warning: #b9855b;
+  --warning-soft: #fff2e5;
+
+  /* Pink / Rose pastel */
+  --danger: #b77b78;
+  --danger-soft: #faeceb;
+
+  /* Brown gelap */
+  --dark: #5b4638;
+
+  --radius: 16px;
+  --shadow: 0 8px 24px rgba(91, 70, 56, 0.08);
+}
+
+/* ===== RESET ===== */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* ===== TOPBAR ===== */
+
+.topbar {
+  padding: 28px clamp(20px, 5vw, 72px);
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  align-items: center;
+
+  /* Cream - Brown Pastel Gradient */
+  background: linear-gradient(
+    135deg,
+    #8b6a52,
+    #b89578,
+    #d8bda4
+  );
+
+  color: #fffaf4;
+}
+
+.topbar h1 {
+  margin: 4px 0 8px;
+  font-size: clamp(1.65rem, 3vw, 2.5rem);
+}
+
+.subtitle {
+  margin: 0;
+  opacity: 0.92;
+}
+
+.eyebrow {
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+/* ===== DATE BOX ===== */
+
+.date-box {
+  min-width: 180px;
+  padding: 14px 16px;
+  border: 1px solid rgba(255, 250, 244, 0.35);
+  border-radius: 14px;
+  background: rgba(255, 250, 244, 0.18);
+  backdrop-filter: blur(6px);
+}
+
+.date-box span,
+.date-box strong {
+  display: block;
+}
+
+.date-box span {
+  font-size: 0.78rem;
+  opacity: 0.85;
+  margin-bottom: 4px;
+}
+
+/* ===== CONTAINER ===== */
+
+.container {
+  width: min(1180px, calc(100% - 32px));
+  margin: 24px auto 48px;
+}
+
+/* ===== NOTICE ===== */
+
+.notice {
+  background: #fff5d9;
+  border: 1px solid #ead5a2;
+  padding: 14px 16px;
+  border-radius: 12px;
+  margin-bottom: 18px;
+  line-height: 1.5;
+  color: #725b3f;
+}
+
+/* ===== SUMMARY ===== */
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.stat-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 18px;
+  box-shadow: var(--shadow);
+
+  /* Efek lembut */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(91, 70, 56, 0.12);
+}
+
+.stat-card span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.8rem;
+  margin-bottom: 6px;
+}
+
+.stat-card strong {
+  font-size: 1.8rem;
+  color: #654b3a;
+}
+
+/* ===== SECTION CARD ===== */
+
+.section-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--shadow);
+  margin-bottom: 18px;
+}
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.section-heading h2 {
+  margin: 4px 0 0;
+  font-size: 1.25rem;
+  color: #5b4638;
+}
+
+.muted {
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+/* ===== FILTER ===== */
+
+.filters {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #675345;
+}
+
+select,
+input {
+  width: 100%;
+  border: 1px solid #dfd1c2;
+  border-radius: 10px;
+  padding: 10px 12px;
+  background: #fffdf9;
+  color: var(--text);
+  outline: none;
+}
+
+select:focus,
+input:focus {
+  border-color: #b89578;
+  box-shadow: 0 0 0 3px rgba(184, 149, 120, 0.15);
+}
+
+/* ===== BUTTON ===== */
+
+.btn {
+  border: 0;
+  border-radius: 10px;
+  padding: 10px 14px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.btn.secondary {
+  background: #795b47;
+  color: #fffaf4;
+}
+
+.btn.secondary:hover {
+  background: #684c3b;
+}
+
+/* ===== WARNING ===== */
+
+.warning-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.warning-card {
+  border-radius: 12px;
+  padding: 14px;
+  border: 1px solid;
+  line-height: 1.4;
+}
+
+.warning-card strong {
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* Warning - Beige / Peach */
+
+.warning-card.warning {
+  background: #fff1df;
+  color: #9a6841;
+  border-color: #e8c69f;
+}
+
+/* Danger - Dusty Rose */
+
+.warning-card.danger {
+  background: #fae9e7;
+  color: #a66764;
+  border-color: #e4b8b3;
+}
+
+/* Success - Sage Green */
+
+.warning-card.success {
+  background: #edf5ed;
+  color: #67876a;
+  border-color: #b9d3ba;
+}
+
+/* ===== TABLE ===== */
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 850px;
+}
+
+th,
+td {
+  padding: 12px 10px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+  font-size: 0.88rem;
+}
+
+th {
+  background: #f5ede3;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #715d4d;
+}
+
+tbody tr:hover {
+  background: #fdf9f4;
+}
+
+/* ===== BADGE ===== */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  min-width: 90px;
+  justify-content: center;
+  padding: 5px 9px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+/* Terjadwal & Menunggu - Beige */
+
+.badge-terjadwal,
+.badge-menunggu {
+  background: #f3e7da;
+  color: #916d50;
+}
+
+/* Berlangsung - Lavender Pastel */
+
+.badge-berlangsung {
+  background: #eee7f5;
+  color: #806795;
+}
+
+/* Selesai - Sage */
+
+.badge-selesai {
+  background: #eaf3ea;
+  color: #658568;
+}
+
+/* Terlambat - Peach */
+
+.badge-terlambat {
+  background: #fff0df;
+  color: #a56e43;
+}
+
+/* Batal - Dusty Rose */
+
+.badge-batal {
+  background: #f8e7e5;
+  color: #a96763;
+}
+
+/* ===== TWO COLUMN ===== */
+
+.two-column {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 18px;
+}
+
+/* ===== MACHINE ===== */
+
+.machine-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.machine-card {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 14px;
+  background: #faf5ee;
+}
+
+.machine-card strong {
+  display: block;
+  margin-bottom: 6px;
+  color: #654b3a;
+}
+
+.machine-card small {
+  color: var(--muted);
+}
+
+/* Maintenance - Rose */
+
+.machine-card.maintenance {
+  border-color: #e2b6b1;
+  background: #fae9e7;
+}
+
+/* Available - Sage */
+
+.machine-card.available {
+  border-color: #b9d3ba;
+  background: #edf5ed;
+}
+
+/* ===== INDICATOR ===== */
+
+.indicator-row {
+  margin-bottom: 20px;
+}
+
+.indicator-row > div:first-child {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  gap: 12px;
+}
+
+/* ===== PROGRESS ===== */
+
+.progress {
+  height: 11px;
+  background: #eadfd3;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0;
+
+  /* Brown Pastel Gradient */
+  background: linear-gradient(
+    90deg,
+    #9b7659,
+    #c8a88e,
+    #d9bda4
+  );
+
+  transition: width 0.25s ease;
+}
+
+/* ===== MINI NOTE ===== */
+
+.mini-note {
+  margin-top: 22px;
+  border-left: 4px solid #b28b6d;
+  background: #f4e9de;
+  padding: 12px 14px;
+  border-radius: 8px;
+  line-height: 1.5;
+  font-size: 0.88rem;
+  color: #6d5849;
+}
+
+/* ===== TASK LIST ===== */
+
+.task-list {
+  margin: 0;
+  padding-left: 22px;
+  line-height: 1.8;
+}
+
+/* ===== FOOTER ===== */
+
+footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.8rem;
+  padding: 20px 16px 36px;
+}
+
+/* ===== EMPTY ROW ===== */
+
+.empty-row {
+  text-align: center;
+  color: var(--muted);
+  padding: 28px;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1000px) {
+  .summary-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .filters {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .warning-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .two-column {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .topbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .date-box {
+    width: 100%;
+  }
+
+  .summary-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .filters,
+  .machine-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
